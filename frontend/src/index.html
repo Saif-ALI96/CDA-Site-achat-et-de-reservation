@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Car Selection</title>
+    <link rel="stylesheet" href="/frontend/public/css/style.css" />
+  </head>
+  <body>
+    <!-- En-tête de la page -->
+    <div class="container">
+      <h1>Models of our cars</h1>
+
+      <!-- Première zone de sélection de modèle et couleur -->
+      <div class="selection-area">
+        <div class="model-selection">
+          <label for="modelSelect">Model</label>
+          <select id="modelSelect">
+            <option value="model1">1 - The Speedster</option>
+          </select>
+        </div>
+
+        <div class="color-selection">
+          <label for="colorSelect">Select Color:</label>
+          <select id="colorSelect">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="silver">Silver</option>
+          </select>
+          <button id="confirmButton1">Confirm</button>
+        </div>
+      </div>
+
+      <!-- Deuxième zone de sélection de modèle et couleur -->
+      <div class="selection-area2">
+        <div class="model-selection2">
+          <label for="modelSelect2">Model</label>
+          <select id="modelSelect2">
+            <option value="model2">2 - The Luxury</option>
+          </select>
+        </div>
+        <div class="color-selection2">
+          <label for="colorSelect2">Select Color:</label>
+          <select id="colorSelect2">
+            <option value="green">Green</option>
+            <option value="yallow">Yallow</option>
+
+            <option value="black">Black</option>
+          </select>
+          <button id="confirmButton2">Confirm</button>
+        </div>
+      </div>
+
+      <!-- Zone d'affichage des images de voiture -->
+      <div class="car-image">
+        <img id="carImage" src="" alt="Selected Car" />
+        <img id="carImage2" src="" alt="Selected Car2" />
+      </div>
+    </div>
+    <script src="/frontend/public/js/script.js"></script>
+  </body>
+</html>
