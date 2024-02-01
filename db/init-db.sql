@@ -21,7 +21,7 @@ BEGIN -- la fonction démarre ici
     NEW.created_dt := CURRENT_TIMESTAMP; -- attribut la date et l'heure (actuel) à creation_dt
     RETURN NEW; -- retourne la nouvelle ligne modifiée
 END; -- la fonction s'arrête ici
-$created_date_user$ LANGUAGE plqgsql; -- la variable TRIGGER (en alias) + le language utilisé pour la BDD
+$created_date_user$ LANGUAGE plpgsql; -- la variable TRIGGER (en alias) + le language utilisé pour la BDD
 
 
 -- Trigger --> created_dt
@@ -38,7 +38,7 @@ BEGIN
     NEW.modified_dt := CURRENT_TIMESTAMP;
     RETURN NEW;
 END;
-$modified_date_user$ LANGUAGE plqgsql;
+$modified_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> modified_dt
@@ -49,13 +49,13 @@ EXECUTE FUNCTION set_modified_date();
 
 
 -- Ajout des données
-INSERT INTO User (first_name, last_name, email, password_user)
+INSERT INTO "User" (first_name, last_name, email, password_user)
 VALUES
-    ("Alice", "Dupont", "alice.dupont@email.com", "MotDePasse123"),
-    ("Bob", "Martin", "bob.martin@email.com", "SecurePass456"),
-    ("Caroline", "Lefevre", "caroline.lefevre@email.com", "Secret123!"),
-    ("David", "Gagnon", "david.gagnon@email.com", "PassWord789"),
-    ("Eva", "Roux", "eva.roux@email.com", "Secure1234")
+    ('Alice', 'Dupont','alice.dupont@email.com','MotDePasse123'),
+    ('Bob', 'Martin', 'bob.martin@email.com', 'SecurePass456'),
+    ('Caroline', 'Lefevre', 'caroline.lefevre@email.com', 'Secret123!'),
+    ('David', 'Gagnon', 'david.gagnon@email.com', 'PassWord789'),
+    ('Eva', 'Roux', 'eva.roux@email.com', 'Secure1234')
 -- clause ON CONFLICT pour éviter les doublons sur les email (va avec 'Ajout de contrainte UNIQUE' ligne 11)
 ON CONFLICT (email) DO NOTHING;
 
@@ -85,7 +85,7 @@ BEGIN
     NEW.created_dt := CURRENT_TIMESTAMP; 
     RETURN NEW;
 END;
-$created_date_user$ LANGUAGE plqgsql;
+$created_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> created_dt
@@ -102,7 +102,7 @@ BEGIN
     NEW.modified_dt := CURRENT_TIMESTAMP;
     RETURN NEW;
 END;
-$modified_date_user$ LANGUAGE plqgsql;
+$modified_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> modified_dt
@@ -115,9 +115,9 @@ EXECUTE FUNCTION set_modified_date();
 -- Ajout des données
 INSERT INTO Vehicle (model, price)
 VALUES
-    ("City - 1.5 ddCi - Diesel - 90hp", 21500.00),
-    ("Family - 1.2 TFe - Gasoline - 130hp", 336500.00),
-    ("Sportive - 2.0 SPi - Gasoline - 240hp", 21500.00)
+    ('City - 1.5 ddCi - Diesel - 90hp', 21500.00),
+    ('Family - 1.2 TFe - Gasoline - 130hp', 336500.00),
+    ('Sportive - 2.0 SPi - Gasoline - 240hp', 21500.00)
 -- clause ON CONFLICT
 ON CONFLICT (model) DO NOTHING;
 
@@ -148,7 +148,7 @@ BEGIN
     NEW.created_dt := CURRENT_TIMESTAMP; 
     RETURN NEW;
 END;
-$created_date_user$ LANGUAGE plqgsql;
+$created_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> created_dt
@@ -165,7 +165,7 @@ BEGIN
     NEW.modified_dt := CURRENT_TIMESTAMP;
     RETURN NEW;
 END;
-$modified_date_user$ LANGUAGE plqgsql;
+$modified_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> modified_dt
@@ -178,9 +178,9 @@ EXECUTE FUNCTION set_modified_date();
 -- Ajout des données
 INSERT INTO VehicleColor (color_name, color_price, id_vehicle)
 VALUES
-    ("Black", 450.00),
-    ("Red", 750.00),
-    ("Metallic Gray", 1000.00)
+    ('Black', 450.00),
+    ('Red', 750.00),
+    ('Metallic Gray', 1000.00)
 -- clause ON CONFLICT
 ON CONFLICT (color_name) DO NOTHING;
 
@@ -211,7 +211,7 @@ BEGIN
     NEW.created_dt := CURRENT_TIMESTAMP; 
     RETURN NEW;
 END;
-$created_date_user$ LANGUAGE plqgsql;
+$created_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> created_dt
@@ -228,7 +228,7 @@ BEGIN
     NEW.modified_dt := CURRENT_TIMESTAMP;
     RETURN NEW;
 END;
-$modified_date_user$ LANGUAGE plqgsql;
+$modified_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> modified_dt
@@ -241,9 +241,9 @@ EXECUTE FUNCTION set_modified_date();
 -- Ajout des données
 INSERT INTO VehicleOption (option_name, option_price, id_vehicle)
 VALUES
-    ("Cruise control/speed limiter", 350.00),
-    ("Gps", 600.00),
-    ("Heated seats", 900.00)
+    ('Cruise control/speed limiter', 350.00),
+    ('Gps', 600.00),
+    ('Heated seats', 900.00)
 -- clause ON CONFLICT
 ON CONFLICT (option_name) DO NOTHING;
 
@@ -278,7 +278,7 @@ BEGIN
     NEW.created_dt := CURRENT_TIMESTAMP; 
     RETURN NEW;
 END;
-$created_date_user$ LANGUAGE plqgsql;
+$created_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> created_dt
@@ -295,7 +295,7 @@ BEGIN
     NEW.modified_dt := CURRENT_TIMESTAMP;
     RETURN NEW;
 END;
-$modified_date_user$ LANGUAGE plqgsql;
+$modified_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> modified_dt
@@ -337,7 +337,7 @@ BEGIN
     NEW.created_dt := CURRENT_TIMESTAMP; 
     RETURN NEW;
 END;
-$created_date_user$ LANGUAGE plqgsql;
+$created_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> created_dt
@@ -354,7 +354,7 @@ BEGIN
     NEW.modified_dt := CURRENT_TIMESTAMP;
     RETURN NEW;
 END;
-$modified_date_user$ LANGUAGE plqgsql;
+$modified_date_user$ LANGUAGE plpgsql;
 
 
 -- Trigger --> modified_dt
