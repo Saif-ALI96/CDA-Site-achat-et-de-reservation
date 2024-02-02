@@ -1,13 +1,13 @@
 "use strict";
 
 class VehicleFactory {
-  static instance = null;
+  static instance;
 
   static getInstance() {
     if (VehicleFactory.instance === null) {
       VehicleFactory.instance = new VehicleFactory();
-      return VehicleFactory.instance;
     }
+    return VehicleFactory.instance;
   }
   createVehicle() {
     throw new Error("This method should be implemented by sub classes");

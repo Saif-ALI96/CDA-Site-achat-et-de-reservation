@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Objets contenant les chemins d'accès aux images pour les modèles et couleurs de voitures
   const carImages = {
     model1: {
-      red: "/frontend/src/images/first-model-red.png",
-      blue: "/frontend/src/images/first-model-blue.png",
-      silver: "/frontend/src/images/first-model-silver.png",
+      red: "/public/images/first-model-red.png",
+      blue: "/public/images/first-model-blue.png",
+      silver: "/public/images/first-model-silver.png",
     },
     model2: {
-      black: "/frontend/src/images/second-model-black.png",
-      green: "/frontend/src/images/second-model-green.png",
-      yallow: "/frontend/src/images/second-model-yallow.png",
+      black: "/public/images/second-model-black.png",
+      green: "/public/images/second-model-green.png",
+      yallow: "/public/images/second-model-yallow.png",
     },
   };
 
