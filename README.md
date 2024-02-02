@@ -74,16 +74,11 @@ Notification : id_notif, message, notif_dt
 • **Observer**\
 Nous avons opter pour un design patterns comportemental pour la fonctionnalité 'Notification' de la plateforme. En effet, il nous est apparu que l'Observer permet d'établir une relation entre objets, de manière à ce que lorsque l'état d'un objet change, tous les objets dépendants en soient informés et mis à jour automatiquement. Ici, ce DP permets de notifier le client du statut de sa réservation, c'est-à-dire à quel étape en est sa commande.
 
-Son avantage : Améliore l'expérience client.
-
 • **Factory**
 
+Modèle :
 Titre
 Description du problème résolu
-Structure et participants
 Avantages et inconvénients
 Mise en place dans le projet
-Diagramme UML (optionnel)
-
-prompt :
-Reformule moi ce paragraphe avec une tournure formelle :
+Image Diagramme UML (optionnel)
