@@ -1,84 +1,102 @@
 # CDA-Site-achat-et-de-reservation
 
-## CONTEXTE  
-Nous avons été contacté par un client qui nous a soumis son projet. Notre client souhaite créer une plateforme en ligne de vente et réservation de voiture. Cette plateforme construit ses propres voitures par le biais de sa production et propose ainsi trois modèles de voiture :
+---
 
-1. City - 1.5 ddCi – Diesel - City car, 90hp, prix : 21500€
-2. Family - 1.2 Tfe - Gasoline - 130hp, prix : 33650€
-3. Sportive - 2.0 Spi – Gasoline - 240hp, prix : 47750€
+## UML
 
-Avant toute action de réservation, l’utilisateur doit se créer un compte client et se connecter. Il pourra également modifier son compte ou le supprimer.
+### **Diagramme de cas d’utilisation**
 
-Une fois la connexion à son compte faite, il pourra choisir, personnaliser et réserver une voiture. Le tout à distance. La personnalisation dans la réservation comprend la sélection de la couleur de son choix et ajouter des options supplémentaires. Ces ajouts occasionnent des frais supplémentaire qui s’additionneront au prix de base du véhicule choisi.
+![Image-diag-une-case](./Diagrammes/Diag.-Usecase-final.drawio.png)
 
-**Colors (x3) :**  
-black (450.00€),\
-red (750.00€),\
-metallic gray (1000.00€)
+_L’utilisateur (`User`), va pouvoir créer un compte client, accéder à son compte et le supprimer. Il pourra choisir un modèle et entamer la phase de personnalisation du véhicule qui comprend : le choix de la couleur et les options supplémentaires ajoutées (ou non). Ensuite, il lui f'audra s'authentifier et il pourra réserver le véhicule, payer, et de ce fait, confirmer la réservation. Il lui sera également possible d’annuler la réservation. À cette étape le véhicule sera fabriquer et le client recevra une notification à chaque nouveau statut de la production jusqu’à son acheminement_
 
-**Options (x3) :**\
-Régulateur/limitateur de vitesse (350,00€)\
-GPS (600,00€)\
-Siège chauffant (900,00€)
+**Notre diagramme use case va refléter les actions que peut réaliser l’acteur (ici, `User`) sur la plateforme :**
 
-Après avoir achevé l’étape ‘de personnalisation, il peut entamer la validation de sa réservation et payer. Une fois validé, la plateforme va envoyer en commande le véhicule réservé :
+**L'utilisateur peut :**
 
-La fabrication va renvoyer des notifications à l’utilisateur pour l’informer de la date de début de production, la date de fin prévue et d’éventuels retard et au final lui notifier la date et le lieu de livraison
+- Créer un compte client en ligne
+- Se connecter et ainsi se déconnecter ou supprimer son compte
+- Choisir un véhicule et le personnaliser (connection non obligatoire)
+- Réserver un véhicule et payer ce qui entrainera la confirmation de la réservation. Il pourra aussi annuler la réservation
+- Être notifié des changement d'étape et des retards possibles
 
 ---
 
-## UML
+### **Diagramme de classes**
 
-• **diagramme de cas d’utilisation**
+![Image-diag-classes](./Diagrammes/Diagramme%20classes.drawio.png)
 
-Ici, le diagramme use case va refléter les actions que peut réaliser l’acteur de la plateforme. L’acteur, ici l’utilisateur (User), va pouvoir créer un compte client, accéder à son compte et le supprimer. Il pourra ainsi démarrer la personnalisation du véhicule puis sa réservation en terminant cette étape par le paiement et la validation de réservation. À cette étape le véhicule sera fabriquer et le client recevra une notification à chaque nouvelle étape de la production jusqu’à son acheminement.
+Classe `User`\
+Classe `Vehicle`\
+Classe `Reservation`\
+Classe `Notification`
 
-Il pourra ainsi s’y connecter, supprimer son compte s’il le souhaite et se déconnecter. Après quoi, il sera possible de choisir un modèle et d’entamer la phase de réservation qui comprend la personnalisation du véhicule. Une fois la couleur choisi et les options supplémentaire ajoutées (ou non) par l’utilisateur, ce dernier pourra payer et, de ce fait, valider la réservation. Il lui sera également possible d’annuler la réservation.
+**Les relations :**\
+La classe `User` est lié la classe `Reservation`\
+Et la classe `Reservation` est lié à la classe `Notification` et à la classe `Vehicle`
 
-**Les acteurs**:\
-User
-
-• **diagramme de classes**
-
-- Classe User
-- Classe Vehicle
-- Classe Reservation
-- Classe Notification
-
-Les relations :
-Classe User est lié Classe Vehicle
-Classe Vehicle est lié à Classe Reservation
-Classe Reservation est lié à Classe Notification
-
-Attributs dans les différentes classes :
-User : id_user, lastname, firstname, password, phone, birthday
-Platform : id
-Vehicle : id_car, model, color, options, base_price
-Reservation : id_reservation, isConformed, isPayd, status
-Notification : id_notif, message, notif_dt
-
----
-
-## MERISE
-
-• **Dictionnaire de données**
-
-- **MCD**
+**Attributs dans les différentes classes :**\
+`User` : `id`, `firstname`, `lastname`, `password`, `email`\
+`Vehicle` : `id`, `model`, `price`, `color`, `costsColor`, `options`, `costsOptions`\
+`Reservation` : `id`, `isConfirmed`, `isPaid`, `customerName`, `date`\
+`Notification` : `id`, `message`, `date`
 
 ---
 
 ## DESIGN PATTERNS
 
-![Image-diag-classes](./illustrations/Cas%20d'utilisation-Diag.-classes%20final.drawio.png)
+![Image-diag-classes-avec-patterns](./Diagrammes/Diag.-classes%20avec%20patterns.drawio.png)
 
-• **Observer**\
-Nous avons opter pour un design patterns comportemental pour la fonctionnalité 'Notification' de la plateforme. En effet, il nous est apparu que l'Observer permet d'établir une relation entre objets, de manière à ce que lorsque l'état d'un objet change, tous les objets dépendants en soient informés et mis à jour automatiquement. Ici, ce DP permets de notifier le client du statut de sa réservation, c'est-à-dire à quel étape en est sa commande.
+### **Factory Method**
 
-• **Factory**
+**Rôle:** _Ce pattern est utile dans notre contexte pour la création des voitures. En effet, nous avons trois modèles de voitures différents et nous ne voulons pas avoir à modifier le code client en fonction du modèle de voiture choisi_
 
-Modèle :
-Titre
-Description du problème résolu
-Avantages et inconvénients
-Mise en place dans le projet
-Image Diagramme UML (optionnel)
+**Utilité dans le contexte :**
+
+- Le pattern Factory Method est utilisé dans la classe `VehicleFactory`
+
+- Cette classe implémente l'interface `Factory` et possède une méthode `createVehicle()` qui retourne une instance d'un objet Vehicle
+
+- La classe VehicleFactory possède trois méthodes concrètes `createCityCar()`, `createFamilyCar()` et `createSportiveCar()` qui retournent respectivement une instance d'un objet `CityCar`, `FamilyCar` et `SportiveCar`
+
+- Le client utilise la classe `VehicleFactory` pour créer une instance d'un objet `Vehicle` sans avoir à connaître la classe concrète de l'objet
+
+---
+
+**Avantages :**
+Il permet de centraliser la logique de création des objets ce qui permet de faciliter l'ajout de nouveaux types d'objets
+
+**Inconvénients :**
+...
+
+---
+
+### **Observer**
+
+**Rôle :** _Le pattern Observer permet de définir une dépendance d'un-à-plusieurs entre des objets. Ce pattern est utile dans notre contexte pour gérer les notifications du statut de la commande qui sont envoyées à l'utilisateur. Nous avons donc opté pour ce design patterns comportemental pour la fonctionnalité 'Notification' de la plateforme. En effet, il nous est apparu que l'Observer permet d'établir une relation entre objets, de manière à ce que lorsque l'état d'un objet change, tous les objets dépendants en soient informés et mis à jour automatiquement. Ici, ce pattern permet de notifier le client du statut de sa réservation, c'est-à-dire à quel étape en est sa commande_
+
+---
+
+**Utilité dans le contexte :**
+
+- Le pattern Observer est implémenté par les classes `Subject` et `Observer`
+
+- La classe `Reservation` implémente l'interface `Subject`
+
+- Cette classe possède une méthode `attach()` qui permet d'ajouter un observateur à la liste des observateurs et une méthode `detach()` qui permet de supprimer un observateur de la liste des observateurs
+
+- La classe `Notification` implémente l'interface `Observer`. Cette classe possède une méthode `update()` qui est appelée lorsque le sujet change d'état
+
+- La classe `Reservation` notifie les observateurs lorsqu'une nouvelle notification est disponible
+
+---
+
+**Avantages :**
+Le pattern Observer permet de séparer les objets qui envoient des notifications des objets qui reçoivent les notifications. Cela permet de rendre le code plus flexible, plus facile à maintenir et réutilisable
+
+**Inconvénients :**
+Le pattern Observer peut rendre le code plus complexe
+
+---
+
+**_CONCLUSION : Nous pensons que notre choix des patterns est pertinent dans le contexte de ce projet car ils permettent de découpler le code, de le rendre plus flexible et plus maintenable. On peut réutiliser le code et faciliter l'ajout de nouvelles fonctionnalités_**
