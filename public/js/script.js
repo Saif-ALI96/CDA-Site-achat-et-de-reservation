@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
       silver: "/public/images/first-model-silver.png",
     },
     model2: {
-      black: "/public/images/second-model-black.png",
+      black: "/public/images/second-model-black2.png",
       green: "/public/images/second-model-green.png",
       yellow: "/public/images/second-model-yellow.png",
     },
