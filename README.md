@@ -1,12 +1,6 @@
 # CDA-Site-achat-et-de-reservation
 
-<<<<<<< HEAD
-## Documentation :
-=======
----
-
 ## UML
->>>>>>> saif
 
 ### **Diagramme de cas d’utilisation**
 
