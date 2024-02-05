@@ -1,8 +1,51 @@
-body,
-html {
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  background-color: #e0f7fa;
+  color: #333; /* Assurez-vous que la couleur du texte est lisible sur votre arrière-plan */
+}
+
+.selection-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre les éléments verticalement */
+  padding: 20px;
+}
+
+.car-image img {
+  display: block;
+  margin-top: 20px; /* Espacement entre le bouton/selection et l'image */
+  max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur de son conteneur */
+  height: auto; /* Maintient le ratio aspect de l'image */
+}
+
+.logo {
+  max-width: 150px;
+  height: auto;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+nav ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Espace entre les éléments de navigation */
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+nav a:hover {
+  color: #017bff;
 }
 
 .container {
@@ -24,4 +67,64 @@ html {
 .car-image img {
   max-width: 100%;
   height: auto;
+}
+Style général body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header-content,
+.footer-content {
+  text-align: center;
+  padding: 20px;
+  background-color: #dfdacb;
+}
+
+/* Styles pour la sélection de voiture */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Style pour afficher les images l'une en dessous de l'autre */
+.car-image img {
+  display: block; /* Chaque image prendra toute la largeur de son conteneur */
+  margin: auto; /* Centre l'image horizontalement */
+  padding-top: 20px; /* Espacement entre les images */
+}
+
+/* Autres styles pour boutons, sélections, etc. */
+button {
+  background-color: #4caf50; /* Couleur verte */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+select {
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.footer-content {
+  text-align: center;
+  padding: 20px;
+  background-color: #dfdacb;
+}
+
+.social-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #222020;
+}
+
+.social-links a:hover {
+  color: #ffaa01;
 }

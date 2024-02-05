@@ -1,8 +1,36 @@
 "use strict";
+
+function sendData(areaNumber) {
+  const modelSelectId = `modelSelect${areaNumber}`;
+  const colorSelectId = `colorSelect${areaNumber}`;
+  console.log(`Sending data for areaNumber: ${areaNumber}`);
+  const modelSelect = document.getElementById(modelSelectId);
+  const colorSelect = document.getElementById(colorSelectId);
+
+  if (modelSelect && colorSelect) {
+    const model = modelSelect.value;
+    const color = colorSelect.value;
+
+    // Envoyer les données au serveur
+    fetch("http://127.0.0.1:8080/recuperer-donnees", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ model, color }),
+    })
+      .then((response) => response.json()) // Convertir la réponse en JSON
+      .then((data) => console.log(data)) // Afficher la réponse du serveur
+      .catch((error) =>
+        console.error("Erreur lors de l'envoi des données:", error)
+      ); // Gérer les erreurs potentielles
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // Récupération des éléments HTML pour le premier modèle de voiture
-  const modelSelect = document.getElementById("modelSelect");
-  const colorSelect = document.getElementById("colorSelect");
+  const modelSelect = document.getElementById("modelSelect1");
+  const colorSelect = document.getElementById("colorSelect1");
   const carImage = document.getElementById("carImage");
 
   // Récupération des éléments HTML pour le deuxième modèle de voiture
@@ -52,9 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Gestionnaire d'événement pour le bouton de confirmation de la deuxième voiture
   const confirmButton2 = document.getElementById("confirmButton2");
   confirmButton2.addEventListener("click", () => {
-    const model = modelSelect2.value;
-    const color = colorSelect2.value;
-    showConfirmation(model, color);
+    const model2 = modelSelect2.value;
+    const color2 = colorSelect2.value;
+    showConfirmation(model2, color2);
   });
 
   // Fonction pour afficher le message de confirmation

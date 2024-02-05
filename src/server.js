@@ -4,6 +4,31 @@ const express = require("express");
 // Instantiate express and assign it to a variable named 'app'
 const app = express();
 
+const cors = require("cors");
+app.use(cors());
+
+// Import body-parser to process POST data
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.post("/recuperer-donnees", (req, res) => {
+  try {
+    const { model, color } = req.body;
+
+    console.log("Données récupérées du frontend:", {
+      model,
+      color,
+    });
+
+    res.json({ message: "Données reçues avec succès" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // First route for the home page
 app.get("/", (req, res) => {
   // Respond with the message "hello world" when accessing the home page
