@@ -1,7 +1,5 @@
 # CDA-Site-achat-et-de-reservation
 
-# CDA-Site-achat-et-de-reservation-
-
 ## Documentation :
 
 ### \* CONTEXTE
